@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Chemistry — Complete Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0e14;
+  --bg2: #111620;
+  --bg3: #181f2e;
+  --bg4: #1e2840;
+  --accent: #4adeaa;
+  --accent2: #38bdf8;
+  --accent3: #f472b6;
+  --accent4: #fb923c;
+  --accent5: #a78bfa;
+  --text: #e8edf5;
+  --text2: #8fa3bf;
+  --text3: #4d6480;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --card: #141b28;
+  --mono: 'DM Mono', monospace;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'Outfit', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+
+/* ─── LAYOUT ─── */
+.wrapper { display: flex; min-height: 100vh; }
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-logo {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-logo .title {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--accent);
+  line-height: 1.2;
+}
+.sidebar-logo .subtitle {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.sidebar-search {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-search input {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.sidebar-search input:focus { border-color: var(--accent); }
+.sidebar-search input::placeholder { color: var(--text3); }
+.nav-section { padding: 16px 12px 8px; }
+.nav-section-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  padding: 0 12px;
+  margin-bottom: 4px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13.5px;
+  color: var(--text2);
+  transition: all 0.15s;
+  text-decoration: none;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+.nav-item:hover { background: var(--bg3); color: var(--text); }
+.nav-item.active { background: rgba(74,222,170,0.12); color: var(--accent); }
+.nav-item .num {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: var(--bg4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--text3);
+  flex-shrink: 0;
+}
+.nav-item.active .num { background: rgba(74,222,170,0.2); color: var(--accent); }
+.progress-track {
+  margin-top: auto;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+.progress-label { font-size: 11px; color: var(--text3); margin-bottom: 8px; display: flex; justify-content: space-between; }
+.progress-bar { height: 4px; background: var(--bg4); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s; }
+
+/* ─── MAIN CONTENT ─── */
+.main {
+  margin-left: 260px;
+  flex: 1;
+  min-height: 100vh;
+}
+
+/* ─── HERO ─── */
+.hero {
+  padding: 80px 64px 60px;
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--bg) 60%);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,222,170,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(74,222,170,0.1);
+  border: 1px solid rgba(74,222,170,0.2);
+  border-radius: 99px;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 52px;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.hero h1 span { color: var(--accent); font-style: italic; }
+.hero p {
+  font-size: 17px;
+  color: var(--text2);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.hero-stats { display: flex; gap: 40px; }
+.stat { display: flex; flex-direction: column; gap: 2px; }
+.stat-num { font-family: var(--serif); font-size: 28px; color: var(--accent); }
+.stat-label { font-size: 12px; color: var(--text3); }
+
+/* ─── CONTENT AREA ─── */
+.content { padding: 0 64px 80px; }
+
+/* ─── TOPIC SECTION ─── */
+.topic-section {
+  padding: 60px 0 40px;
+  border-bottom: 1px solid var(--border);
+}
+.topic-section:last-child { border-bottom: none; }
+.section-header { margin-bottom: 32px; }
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 12px;
+}
+.section-tag .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+h2.section-title {
+  font-family: var(--serif);
+  font-size: 36px;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.section-subtitle {
+  font-size: 15px;
+  color: var(--text2);
+  max-width: 640px;
+  line-height: 1.65;
+}
+
+/* ─── DEFINITION BOX ─── */
+.def-box {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  font-size: 14.5px;
+  color: var(--text2);
+  line-height: 1.7;
+  margin: 16px 0;
+}
+.def-box strong { color: var(--text); }
+
+/* ─── FORMULA BLOCK ─── */
+.formula-block {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: #a5f3d3;
+  line-height: 2;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+.formula-block .comment { color: var(--text3); font-style: italic; font-family: var(--sans); font-size: 12px; }
+.formula-inline {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: rgba(74,222,170,0.08);
+  border: 1px solid rgba(74,222,170,0.15);
+  border-radius: 5px;
+  padding: 1px 7px;
+  color: #a5f3d3;
+}
+
+/* ─── CARDS GRID ─── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 18px;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: default;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  margin-bottom: 10px;
+}
+.card-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.card-formula {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.card-desc { font-size: 12.5px; color: var(--text2); line-height: 1.55; }
+.card-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+.badge-green { background: rgba(74,222,170,0.12); color: var(--accent); }
+.badge-blue { background: rgba(56,189,248,0.12); color: var(--accent2); }
+.badge-pink { background: rgba(244,114,182,0.12); color: var(--accent3); }
+.badge-orange { background: rgba(251,146,60,0.12); color: var(--accent4); }
+.badge-purple { background: rgba(167,139,250,0.12); color: var(--accent5); }
+
+/* ─── TABLE ─── */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border2); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+thead { background: var(--bg3); }
+th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  color: var(--text2);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border2);
+  white-space: nowrap;
+}
+td {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+td:first-child { color: var(--text); font-weight: 500; }
+td .formula-inline { font-size: 12px; }
+
+/* ─── ISOMER TOGGLE ─── */
+.iso-toggle { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+.iso-btn {
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border2);
+  background: var(--bg3);
+  color: var(--text2);
+  font-family: var(--sans);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.iso-btn:hover { border-color: var(--accent); color: var(--accent); }
+.iso-btn.active { background: rgba(74,222,170,0.12); border-color: var(--accent); color: var(--accent); }
+.iso-panel { display: none; animation: fadeUp 0.25s ease; }
+.iso-panel.active { display: block; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─── REACTION FLOW ─── */
+.reaction {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+  padding: 14px 18px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.reaction .reagent { color: #a5f3d3; }
+.reaction .arrow { color: var(--accent4); font-size: 18px; }
+.reaction .product { color: #7dd3fc; }
+.reaction .condition {
+  font-size: 11px;
+  color: var(--text3);
+  padding: 2px 8px;
+  background: var(--bg4);
+  border-radius: 99px;
+  font-family: var(--sans);
+}
+
+/* ─── CIS TRANS VISUAL ─── */
+.cis-trans-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.ct-card {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.ct-card.cis { border-top: 3px solid var(--accent); }
+.ct-card.trans { border-top: 3px solid var(--accent2); }
+.ct-label { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+.ct-card.cis .ct-label { color: var(--accent); }
+.ct-card.trans .ct-label { color: var(--accent2); }
+.ct-svg { margin: 8px auto; display: block; }
+.ct-desc { font-size: 12.5px; color: var(--text2); margin-top: 10px; line-height: 1.5; }
+.ct-mp { font-size: 12px; color: var(--text3); margin-top: 6px; }
+
+/* ─── DEGREE CARDS ─── */
+.degree-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 16px 0; }
+.deg-card {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.deg-card:hover { transform: translateY(-3px); }
+.deg-num { font-family: var(--serif); font-size: 32px; color: var(--accent); }
+.deg-title { font-size: 13px; font-weight: 500; color: var(--text); margin: 6px 0 4px; }
+.deg-formula { font-family: var(--mono); font-size: 12px; color: var(--text2); line-height: 1.8; }
+.deg-example { font-size: 12px; color: var(--text3); margin-top: 8px; }
+
+/* ─── ACCORDION ─── */
+.accordion { margin: 16px 0; }
+.acc-item {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.acc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  transition: background 0.15s;
+  user-select: none;
+}
+.acc-header:hover { background: var(--bg3); }
+.acc-icon { color: var(--accent); font-size: 18px; transition: transform 0.2s; }
+.acc-body { display: none; padding: 0 18px 16px; font-size: 13.5px; color: var(--text2); line-height: 1.7; }
+.acc-item.open .acc-body { display: block; }
+.acc-item.open .acc-icon { transform: rotate(45deg); }
+
+/* ─── QUIZ SECTION ─── */
+.quiz-box {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  padding: 28px;
+  margin: 24px 0;
+}
+.quiz-q { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 18px; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
+.quiz-option {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--sans);
+  text-align: left;
+}
+.quiz-option:hover { border-color: var(--accent); color: var(--text); }
+.quiz-option.correct { border-color: var(--accent); background: rgba(74,222,170,0.08); color: var(--accent); }
+.quiz-option.wrong { border-color: var(--accent3); background: rgba(244,114,182,0.08); color: var(--accent3); }
+.quiz-feedback { margin-top: 14px; font-size: 13.5px; color: var(--text2); display: none; }
+.quiz-feedback.show { display: block; }
+
+/* ─── HIGHLIGHTER ─── */
+mark { background: rgba(74,222,170,0.2); color: var(--accent); border-radius: 3px; padding: 0 3px; font-style: normal; }
+
+/* ─── HISTORY CALLOUT ─── */
+.callout {
+  display: flex;
+  gap: 16px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 16px 0;
+  align-items: flex-start;
+}
+.callout-icon { font-size: 22px; flex-shrink: 0; line-height: 1; }
+.callout-content .callout-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+.callout-content p { font-size: 13.5px; color: var(--text2); line-height: 1.65; }
+
+/* ─── SECTION DIVIDER ─── */
+.divider { height: 1px; background: var(--border); margin: 32px 0; }
+.sub-heading {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 28px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sub-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── MOBILE HAMBURGER ─── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text);
+}
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 99;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .main { margin-left: 0; }
+  .sidebar { transform: translateX(-100%); transition: transform 0.25s; }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay.show { display: block; }
+  .hamburger { display: flex; }
+  .hero { padding: 60px 24px 40px; }
+  .hero h1 { font-size: 36px; }
+  .content { padding: 0 24px 60px; }
+  .cis-trans-grid, .degree-grid { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-wrap: wrap; gap: 20px; }
+}
+
+/* ─── PRINT ─── */
+@media print {
+  .sidebar, .hamburger { display: none; }
+  .main { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" onclick="toggleSidebar()">☰</button>
+<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="title">Organic Chemistry</div>
+    <div class="subtitle">Complete Study Guide</div>
+  </div>
+  <div class="sidebar-search">
+    <input type="text" placeholder="Search topics..." id="searchInput" oninput="filterNav(this.value)">
+  </div>
+  <div class="nav-section" id="navList">
+    <div class="nav-section-label">Topics</div>
+    <a class="nav-item active" href="#intro" onclick="setActive(this)"><span class="num">01</span> Introduction</a>
+    <a class="nav-item" href="#classification" onclick="setActive(this)"><span class="num">02</span> Classification</a>
+    <a class="nav-item" href="#functional" onclick="setActive(this)"><span class="num">03</span> Functional Groups</a>
+    <a class="nav-item" href="#alkanes" onclick="setActive(this)"><span class="num">04</span> Alkanes</a>
+    <a class="nav-item" href="#alkenes" onclick="setActive(this)"><span class="num">05</span> Alkenes</a>
+    <a class="nav-item" href="#alkynes" onclick="setActive(this)"><span class="num">06</span> Alkynes</a>
+    <a class="nav-item" href="#alcohols" onclick="setActive(this)"><span class="num">07</span> Alcohols</a>
+    <a class="nav-item" href="#acids" onclick="setActive(this)"><span class="num">08</span> Carboxylic Acids</a>
+    <a class="nav-item" href="#amides" onclick="setActive(this)"><span class="num">09</span> Amides</a>
+    <a class="nav-item" href="#isomerism" onclick="setActive(this)"><span class="num">10</span> Isomerism</a>
+  </div>
+  <div class="progress-track">
+    <div class="progress-label"><span>Progress</span><span id="progressPct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag"><span>📖</span> Class Notes · Lecture Series</div>
+    <h1>Organic<br><span>Chemistry</span></h1>
+    <p>A detailed interactive study guide covering all topics from the lecture notes — definitions, classification, naming rules, examples, and more.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">10</span><span class="stat-label">Topics</span></div>
+      <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Examples</span></div>
+      <div class="stat"><span class="stat-num">132</span><span class="stat-label">Lecture pages</span></div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ══════════════════════════ TOPIC 1 ══════════════════════════ -->
+    <section class="topic-section" id="intro">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent)"></span> Lecture 1</div>
+        <h2 class="section-title">Introduction to Organic Chemistry</h2>
+        <p class="section-subtitle">Understanding what organic compounds are, their origin, and the historical foundation of the discipline.</p>
+      </div>
+
+      <div class="def-box">
+        <strong>Organic Chemistry</strong> is the branch of chemistry concerned with the study of <mark>organic compounds</mark> — substances composed of carbon (C) and hydrogen (H), along with their derivatives. The word "organic" originally referred to substances derived from living organisms.
+      </div>
+
+      <div class="sub-heading">What is an Organic Compound?</div>
+      <p style="color:var(--text2);font-size:14.5px;line-height:1.75">Compounds formed primarily from <mark>carbon (C) and hydrogen (H)</mark> are called hydrocarbons. All hydrocarbons and their derived groups — where other elements (O, N, Cl, etc.) replace hydrogen — are collectively called <strong>organic compounds</strong>.</p>
+
+      <div class="cards-grid" style="margin-top:20px">
+        <div class="card">
+          <div class="card-num">Example 01</div>
+          <div class="card-name">Methane</div>
+          <div class="card-formula">CH₄</div>
+          <div class="card-desc">Simplest hydrocarbon. One carbon bonded to four hydrogens. Found in natural gas.</div>
+          <span class="card-badge badge-green">Hydrocarbon</span>
+        </div>
+        <div class="card">
+          <div class="card-num">Example 02</div>
+          <div class="card-name">Chloromethane</div>
+          <div class="card-formula">CH₃–Cl</div>
+          <div class="card-desc">Methane derivative where one H is replaced by Cl. A halo compound.</div>
+          <span class="card-badge badge-blue">Halo Compound</span>
+        </div>
+        <div class="card">
+          <div class="card-num">Example 03</div>
+          <div class="card-name">Methanol</div>
+          <div class="card-formula">CH₃–OH</div>
+          <div class="card-desc">Simplest alcohol. Methane derivative where –OH replaces –H. Also called wood alcohol.</div>
+          <span class="card-badge badge-orange">Alcohol</span>
+        </div>
+        <div class="card">
+          <div class="card-num">Example 04</div>
+          <div class="card-name">Ethane</div>
+          <div class="card-formula">C₂H₆ = CH₃–CH₃</div>
+          <div class="card-desc">Two-carbon hydrocarbon. Backbone of petrochemistry.</div>
+          <span class="card-badge badge-green">Hydrocarbon</span>
+        </div>
+      </div>
+
+      <div class="sub-heading">Historical Background</div>
+      <div class="callout">
+        <div class="callout-icon">⚗️</div>
+        <div class="callout-content">
+          <div class="callout-title">Vitalist Theory — Berzelius (1807)</div>
+          <p>Jöns Jacob Berzelius proposed that organic compounds could only be produced by living organisms through a mysterious "vital force." This theory dominated early chemistry.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <div class="callout-icon">🔬</div>
+        <div class="callout-content">
+          <div class="callout-title">Wöhler's Synthesis — Friedrich Wöhler (1828)</div>
+          <p>Wöhler disproved the vitalist theory by synthesising <strong>urea</strong> (an organic compound) from the inorganic salt ammonium cyanate in a laboratory, proving organic compounds can be made artificially.</p>
+        </div>
+      </div>
+
+      <div class="sub-heading">Wöhler's Reaction</div>
+      <div class="reaction">
+        <span class="reagent">NH₄Cl + Pb(CNO)₂</span>
+        <span class="arrow">⟶</span>
+        <span class="product">NH₄CNO + PbCl₂</span>
+      </div>
+      <div class="reaction">
+        <span class="reagent">NH₄CNO</span>
+        <span class="condition">Δ (heat)</span>
+        <span class="arrow">⟶</span>
+        <span class="product">NH₂–CO–NH₂</span>
+        <span style="color:var(--text3);font-size:12px;font-family:var(--sans)">(Urea — first synthetic organic compound)</span>
+      </div>
+
+      <div class="quiz-box">
+        <div class="quiz-q">🧪 Quick Check: What did Wöhler's 1828 experiment prove?</div>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="checkQuiz(this, false, 'q1')">Organic compounds always require living organisms to form.</button>
+          <button class="quiz-option" onclick="checkQuiz(this, true, 'q1')">Organic compounds can be synthesised in a laboratory from inorganic materials.</button>
+          <button class="quiz-option" onclick="checkQuiz(this, false, 'q1')">Carbon only bonds with hydrogen.</button>
+        </div>
+        <div class="quiz-feedback" id="q1">✓ Wöhler made urea (NH₂CONH₂) from NH₄CNO, disproving the vitalist theory and founding modern organic chemistry.</div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TOPIC 2 ══════════════════════════ -->
+    <section class="topic-section" id="classification">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent2)"></span> Lecture 2</div>
+        <h2 class="section-title">Classification of Organic Compounds</h2>
+        <p class="section-subtitle">How organic compounds are organised based on their carbon skeleton and degree of saturation.</p>
+      </div>
+
+      <div class="def-box">
+        Organic compounds are classified by the <strong>shape of their carbon skeleton</strong> (open-chain or ring) and by the <strong>types of bonds</strong> they contain (single, double, or triple).
+      </div>
+
+      <div class="sub-heading">1. Acyclic / Open-chain Compounds (Aliphatic)</div>
+      <p style="color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:12px">Carbon atoms are joined in a straight or branched chain — no ring. Called "aliphatic" from the Greek word for fat (they were first extracted from fats).</p>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-name">Saturated (Alkanes)</div>
+          <div class="card-formula">–C–C–</div>
+          <div class="card-desc">Only single bonds between carbons. Maximum hydrogen content. Cannot react with Br₂ without UV light.</div>
+          <span class="card-badge badge-green">Single bond only</span>
+        </div>
+        <div class="card">
+          <div class="card-name">Unsaturated (Alkenes)</div>
+          <div class="card-formula">C=C</div>
+          <div class="card-desc">At least one carbon-carbon double bond. Reactive — can undergo addition reactions.</div>
+          <span class="card-badge badge-blue">Double bond</span>
+        </div>
+        <div class="card">
+          <div class="card-name">Unsaturated (Alkynes)</div>
+          <div class="card-formula">–C≡C–</div>
+          <div class="card-desc">At least one carbon-carbon triple bond. Highly reactive.</div>
+          <span class="card-badge badge-pink">Triple bond</span>
+        </div>
+      </div>
+
+      <div class="sub-heading">2. Cyclic / Ring Compounds</div>
+      <p style="color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:12px">Carbon atoms form a closed ring. Divided into carbocyclic (all C in ring) and heterocyclic (other atoms in ring).</p>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-name">Homocyclic / Carbocyclic</div>
+          <div class="card-formula">Cycloalkanes, Benzene</div>
+          <div class="card-desc">Ring contains only carbon atoms. Examples: cyclopentane (C₅H₁₀), cyclohexane (C₆H₁₂), benzene (C₆H₆).</div>
+          <span class="card-badge badge-orange">All-carbon ring</span>
+        </div>
+        <div class="card">
+          <div class="card-name">Heterocyclic</div>
+          <div class="card-formula">Pyridine, Furan, Pyrrole</div>
+          <div class="card-desc">Ring contains atoms other than carbon — like N, O, or S. Examples: pyridine (N in ring), furan (O in ring).</div>
+          <span class="card-badge badge-purple">Mixed-atom ring</span>
+        </div>
+        <div class="card">
+          <div class="card-name">Aromatic</div>
+          <div class="card-formula">C₆H₅– (Phenyl)</div>
+          <div class="card-desc">Special cyclic compounds with delocalized π electrons (Hückel's rule: 4n+2 π electrons). Benzene is the parent compound.</div>
+          <span class="card-badge badge-pink">Benzene ring</span>
+        </div>
+      </div>
+
+      <div class="sub-heading">Classification Summary Table</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Type</th><th>Sub-type</th><th>Bond</th><th>Example</th><th>Formula</th></tr></thead>
+          <tbody>
+            <tr><td>Acyclic</td><td>Alkane (saturated)</td><td>–C–C–</td><td>Ethane</td><td><span class="formula-inline">C₂H₆</span></td></tr>
+            <tr><td>Acyclic</td><td>Alkene (unsaturated)</td><td>C=C</td><td>Ethene</td><td><span class="formula-inline">C₂H₄</span></td></tr>
+            <tr><td>Acyclic</td><td>Alkyne (unsaturated)</td><td>–C≡C–</td><td>Ethyne</td><td><span class="formula-inline">C₂H₂</span></td></tr>
+            <tr><td>Cyclic</td><td>Cycloalkane</td><td>–C–C– (ring)</td><td>Cyclopentane</td><td><span class="formula-inline">C₅H₁₀</span></td></tr>
+            <tr><td>Cyclic</td><td>Aromatic</td><td>Delocalised π</td><td>Benzene</td><td><span class="formula-inline">C₆H₆</span></td></tr>
+            <tr><td>Cyclic</td><td>Heterocyclic</td><td>Ring with N/O/S</td><td>Pyridine</td><td><span class="formula-inline">C₅H₅N</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TOPIC 3 ══════════════════════════ -->
+    <section class="topic-section" id="functional">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent3)"></span> Lecture 3</div>
+        <h2 class="section-title">Homologous Series & Functional Groups</h2>
+        <p class="section-subtitle">The key chemical groups that define the reactivity and properties of organic compounds.</p>
+      </div>
+
+      <div class="def-box">
+        A <strong>homologous series</strong> is a family of compounds that share the same functional group, differ by –CH₂– units, and follow a general molecular formula. Each successive member has 14 more in mass.
+      </div>
+
+      <div class="sub-heading">Complete Functional Groups Table</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Homologous Series</th><th>Functional Group Name</th><th>Symbol</th><th>Structural Form</th><th>Simple Example</th></tr></thead>
+          <tbody>
+            <tr><td>Alkane</td><td>—</td><td>–C–C–</td><td>–CH₂–</td><td><span class="formula-inline">CH₄</span> Methane</td></tr>
+            <tr><td>Alkene</td><td>C–C double bond</td><td>C=C</td><td><span class="formula-inline">C=C</span></td><td><span class="formula-inline">CH₂=CH₂</span> Ethene</td></tr>
+            <tr><td>Alkyne</td><td>C–C triple bond</td><td>–C≡C–</td><td><span class="formula-inline">–C≡C–</span></td><td><span class="formula-inline">CH≡CH</span> Ethyne</td></tr>
+            <tr><td>Alcohol</td><td>Hydroxyl</td><td>–OH</td><td>R–OH</td><td><span class="formula-inline">CH₃OH</span> Methanol</td></tr>
+            <tr><td>Primary Alcohol (1°)</td><td>Primary hydroxyl</td><td>–CH₂OH</td><td>R–CH₂–OH</td><td><span class="formula-inline">C₂H₅OH</span> Ethanol</td></tr>
+            <tr><td>Secondary Alcohol (2°)</td><td>Secondary hydroxyl</td><td>–CHOH–</td><td>R₂CH–OH</td><td><span class="formula-inline">CH₃CHOHCH₃</span></td></tr>
+            <tr><td>Tertiary Alcohol (3°)</td><td>Tertiary hydroxyl</td><td>–C(OH)–</td><td>R₃C–OH</td><td><span class="formula-inline">(CH₃)₃COH</span></td></tr>
+            <tr><td>Aldehyde</td><td>Aldehyde group</td><td>–CHO</td><td>R–CHO</td><td><span class="formula-inline">HCHO</span> Methanal</td></tr>
+            <tr><td>Ketone</td><td>Ketone group / carbonyl</td><td>R–CO–R</td><td>R–C(=O)–R</td><td><span class="formula-inline">CH₃COCH₃</span> Propanone</td></tr>
+            <tr><td>Carboxylic Acid</td><td>Carboxyl group</td><td>–COOH</td><td>R–COOH</td><td><span class="formula-inline">HCOOH</span> Methanoic acid</td></tr>
+            <tr><td>Ester</td><td>Ester group</td><td>–COO–</td><td>R–COO–R'</td><td><span class="formula-inline">CH₃COOC₂H₅</span></td></tr>
+            <tr><td>Amide</td><td>Amide group</td><td>–CONH₂</td><td>R–CONH₂</td><td><span class="formula-inline">HCONH₂</span> Formamide</td></tr>
+            <tr><td>Amine</td><td>Amino group</td><td>–NH₂</td><td>R–NH₂</td><td><span class="formula-inline">CH₃NH₂</span> Methylamine</td></tr>
+            <tr><td>Haloalkane</td><td>Halo group</td><td>–X (X = F,Cl,Br,I)</td><td>R–X</td><td><span class="formula-inline">CH₃Cl</span> Chloromethane</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TOPIC 4 ══════════════════════════ -->
+    <section class="topic-section" id="alkanes">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent4)"></span> Lecture 4</div>
+        <h2 class="section-title">Alkanes — Saturated Hydrocarbons</h2>
+        <p class="section-subtitle">The simplest organic family. Only single C–C bonds. General formula: CₙH₂ₙ₊₂.</p>
+      </div>
+
+      <div class="def-box">
+        <strong>Alkanes</strong> are saturated hydrocarbons with only single C–C bonds. General formula: <mark>CₙH₂ₙ₊₂</mark>. Suffix: <mark>-ane</mark>. They are relatively unreactive (hence the old name "paraffins" — parum affinis = little affinity).
+      </div>
+
+      <div class="sub-heading">First Ten Alkanes</div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-num">n = 1</div><div class="card-name">Methane</div><div class="card-formula">CH₄</div><div class="card-desc">Main component of natural gas.</div></div>
+        <div class="card"><div class="card-num">n = 2</div><div class="card-name">Ethane</div><div class="card-formula">C₂H₆ = CH₃–CH₃</div><div class="card-desc">Used in petrochemical industry.</div></div>
+        <div class="card"><div class="card-num">n = 3</div><div class="card-name">Propane</div><div class="card-formula">C₃H₈ = CH₃CH₂CH₃</div><div class="card-desc">LPG cylinder gas.</div></div>
+        <div class="card"><div class="card-num">n = 4</div><div class="card-name">Butane</div><div class="card-formula">C₄H₁₀</div><div class="card-desc">Lighter fuel. Has 2 structural isomers.</div></div>
+        <div class="card"><div class="card-num">n = 5</div><div class="card-name">Pentane</div><div class="card-formula">C₅H₁₂</div><div class="card-desc">3 structural isomers.</div></div>
+        <div class="card"><div class="card-num">n = 6</div><div class="card-name">Hexane</div><div class="card-formula">C₆H₁₄</div><div class="card-desc">Common solvent.</div></div>
+        <div class="card"><div class="card-num">n = 7</div><div class="card-name">Heptane</div><div class="card-formula">C₇H₁₆</div><div class="card-desc">Octane rating reference (0 rating).</div></div>
+        <div class="card"><div class="card-num">n = 8</div><div class="card-name">Octane</div><div class="card-formula">C₈H₁₈</div><div class="card-desc">Petrol component. Octane rating reference (100).</div></div>
+      </div>
+
+      <div class="sub-heading">Structural Isomers of Pentane (C₅H₁₂)</div>
+      <div class="iso-toggle">
+        <button class="iso-btn active" onclick="showIso('pent1', this, 'isoP')">n-Pentane</button>
+        <button class="iso-btn" onclick="showIso('pent2', this, 'isoP')">Isopentane</button>
+        <button class="iso-btn" onclick="showIso('pent3', this, 'isoP')">Neopentane</button>
+      </div>
+      <div class="iso-panel active" id="pent1">
+        <div class="formula-block">n-Pentane (unbranched chain)
+CH₃ – CH₂ – CH₂ – CH₂ – CH₃   <span class="comment">→ 5 carbons in a straight chain</span>
+Boiling point: 36.1°C</div>
+        <div class="def-box">The straight-chain isomer. All 5 carbons connected end-to-end.</div>
+      </div>
+      <div class="iso-panel" id="pent2">
+        <div class="formula-block">Isopentane (2-methylbutane)
+        CH₃
+        |
+CH₃ – CH – CH₂ – CH₃   <span class="comment">→ 4-carbon chain with CH₃ branch at C-2</span>
+Boiling point: 27.7°C</div>
+        <div class="def-box">A branch (CH₃) at the second carbon from one end. Named 2-methylbutane in IUPAC.</div>
+      </div>
+      <div class="iso-panel" id="pent3">
+        <div class="formula-block">Neopentane (2,2-dimethylpropane)
+        CH₃
+        |
+CH₃ – C – CH₃   <span class="comment">→ central carbon bonded to 4 methyls</span>
+        |
+        CH₃
+Boiling point: 9.5°C</div>
+        <div class="def-box">The most branched isomer. The central carbon carries 4 methyl groups. Named 2,2-dimethylpropane in IUPAC.</div>
+      </div>
+
+      <div class="sub-heading">Alkyl Groups (–CₙH₂ₙ₊₁)</div>
+      <div class="def-box">Remove one H from an alkane → alkyl group. Named with suffix <mark>-yl</mark> instead of -ane.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Alkyl Group</th><th>Formula</th><th>From Alkane</th><th>Common Abbreviation</th></tr></thead>
+          <tbody>
+            <tr><td>Methyl</td><td><span class="formula-inline">–CH₃</span></td><td>Methane</td><td>Me–</td></tr>
+            <tr><td>Ethyl</td><td><span class="formula-inline">–C₂H₅ = –CH₂CH₃</span></td><td>Ethane</td><td>Et–</td></tr>
+            <tr><td>n-Propyl</td><td><span class="formula-inline">–CH₂CH₂CH₃</span></td><td>Propane</td><td>n-Pr–</td></tr>
+            <tr><td>iso-Propyl</td><td><span class="formula-inline">–CH(CH₃)₂</span></td><td>Propane</td><td>i-Pr–</td></tr>
+            <tr><td>n-Butyl</td><td><span class="formula-inline">–(CH₂)₃CH₃</span></td><td>Butane</td><td>n-Bu–</td></tr>
+            <tr><td>tert-Butyl</td><td><span class="formula-inline">–C(CH₃)₃</span></td><td>Isobutane</td><td>t-Bu–</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-heading">IUPAC Naming Rules for Alkanes</div>
+      <div class="accordion">
+        <div class="acc-item open">
+          <div class="acc-header" onclick="toggleAcc(this)">Rule 1: Find the longest carbon chain <span class="acc-icon">+</span></div>
+          <div class="acc-body">Identify the longest continuous chain of carbon atoms. This gives the parent alkane name. Example: a chain of 6 carbons = hexane parent.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">Rule 2: Number the chain from the nearest branch <span class="acc-icon">+</span></div>
+          <div class="acc-body">Number the carbons starting from the end nearer to the first branch point. The substituent should get the lowest possible number.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">Rule 3: Name and number the substituents <span class="acc-icon">+</span></div>
+          <div class="acc-body">Each branch is named as an alkyl group with its position number as a prefix. Multiple identical groups use prefixes: di-, tri-, tetra-.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">Rule 4: Alphabetical order for substituents <span class="acc-icon">+</span></div>
+          <div class="acc-body">When there are multiple different substituents, list them alphabetically (ignoring di/tri prefixes). E.g.: 3-ethyl-2-methylpentane.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TOPIC 5 ══════════════════════════ -->
+    <section class="topic-section" id="alkenes">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent5)"></span> Lecture 5</div>
+        <h2 class="section-title">Alkenes — Unsaturated Hydrocarbons</h2>
+        <p class="section-subtitle">Compounds with at least one C=C double bond. General formula: CₙH₂ₙ. Suffix: -ene.</p>
+      </div>
+
+      <div class="def-box">
+        <strong>Alkenes</strong> contain one or more <mark>C=C double bonds</mark>. General formula: <mark>CₙH₂ₙ</mark> (for one double bond). They are much more reactive than alkanes due to the π bond. Suffix: <mark>-ene</mark>.
+      </div>
+
+      <div class="sub-heading">Common Alkenes</div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-num">C₂H₄</div><div class="card-name">Ethene (Ethylene)</div><div class="card-formula">CH₂=CH₂</div><div class="card-desc">Most important industrial alkene. Used to make polyethylene plastic.</div><span class="card-badge badge-purple">1 double bond</span></div>
+        <div class="card"><div class="card-num">C₃H₆</div><div class="card-name">Propene (Propylene)</div><div class="card-formula">CH₃–CH=CH₂</div><div class="card-desc">Used to make polypropylene. Double bond at C-1.</div><span class="card-badge badge-purple">1 double bond</span></div>
+        <div class="card"><div class="card-num">C₄H₈</div><div class="card-name">But-1-ene</div><div class="card-formula">CH₃CH₂–CH=CH₂</div><div class="card-desc">Double bond between C-1 and C-2.</div><span class="card-badge badge-blue">Position: C1–C2</span></div>
+        <div class="card"><div class="card-num">C₄H₈</div><div class="card-name">But-2-ene</div><div class="card-formula">CH₃–CH=CH–CH₃</div><div class="card-desc">Double bond between C-2 and C-3. Has cis/trans isomers.</div><span class="card-badge badge-pink">Position: C2–C3</span></div>
+        <div class="card"><div class="card-num">C₄H₈</div><div class="card-name">2-Methylpropene</div><div class="card-formula">CH₂=C(CH₃)₂</div><div class="card-desc">Branched alkene. Also called isobutylene.</div><span class="card-badge badge-orange">Branched</span></div>
+        <div class="card"><div class="card-num">C₅H₁₀</div><div class="card-name">2-Methylbut-2-ene</div><div class="card-formula">CH₃–C(CH₃)=CH–CH₃</div><div class="card-desc">From the notes: 2-methylbutane structure with a double bond.</div><span class="card-badge badge-green">From notes</span></div>
+      </div>
+
+      <div class="sub-heading">IUPAC Naming Rules for Alkenes</div>
+      <div class="formula-block">
+Rule 1: Find the longest chain that CONTAINS the C=C double bond.
+Rule 2: Number from the end CLOSEST to the double bond.
+Rule 3: Indicate the double bond position with the lower-numbered C.
+
+Example:
+CH₃ – CH = CH – CH₂ – CH₃
+  5      4    3    2    1       ← number from right (double bond gets position 2)
+Name: Pent-2-ene
+
+CH₃ – CH₂ – CH = CH₂
+  4      3    2    1             ← double bond at C1-C2
+Name: But-1-ene
+      </div>
+
+      <div class="sub-heading">Naming Practice — Complex Examples from Notes</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Structure (from notes)</th><th>IUPAC Name</th><th>Key features</th></tr></thead>
+          <tbody>
+            <tr><td><span class="formula-inline">CH₃–CH(CH₃)–CH₂–CH₂–CH₃</span></td><td>2-methylpentane</td><td>5-carbon parent, CH₃ branch at C-2</td></tr>
+            <tr><td><span class="formula-inline">CH₃–CH₂–C(CH₃)₂–CH₂–CH₃</span></td><td>3,3-dimethylpentane</td><td>Two methyls at C-3</td></tr>
+            <tr><td><span class="formula-inline">CH₃–CH=CH–CH₂–CH₃</span></td><td>Pent-2-ene</td><td>5C chain, double bond at C2–C3</td></tr>
+            <tr><td><span class="formula-inline">CH₃–CH₂–CH=CH–CH₂–CH₃</span></td><td>Hex-3-ene</td><td>6C chain, double bond at C3–C4</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="quiz-box">
+        <div class="quiz-q">🧪 Quick Check: What is the correct IUPAC name for CH₃–CH=CH–CH₂–CH₃?</div>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="checkQuiz(this, false, 'q2')">Pent-3-ene</button>
+          <button class="quiz-option" onclick="checkQuiz(this, true, 'q2')">Pent-2-ene</button>
+          <button class="quiz-option" onclick="checkQuiz(this, false, 'q2')">2-Pentene (not IUPAC style)</button>
+        </div>
+        <div class="quiz-feedback" id="q2">✓ Number from right: the double bond is between C-2 and C-3 (lower number wins). Correct name: Pent-2-ene.</div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TOPIC 6 ══════════════════════════ -->
+    <section class="topic-section" id="alkynes">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent)"></span> Lecture 6</div>
+        <h2 class="section-title">Alkynes — Triple Bond Hydrocarbons</h2>
+        <p class="section-subtitle">Unsaturated compounds with at least one C≡C triple bond. General formula: CₙH₂ₙ₋₂. Suffix: -yne.</p>
+      </div>
+
+      <div class="def-box">
+        <strong>Alkynes</strong> contain a <mark>C≡C triple bond</mark>. General formula: <mark>CₙH₂ₙ₋₂</mark> (for one triple bond). The C atoms at the triple bond are sp-hybridised and have linear geometry (180°). Suffix: <mark>-yne</mark>.
+      </div>
+
+      <div class="sub-heading">Common Alkynes</div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-num">C₂H₂</div><div class="card-name">Ethyne (Acetylene)</div><div class="card-formula">HC≡CH</div><div class="card-desc">Used in welding torches (oxy-acetylene flame). Simplest alkyne.</div><span class="card-badge badge-green">Welding gas</span></div>
+        <div class="card"><div class="card-num">C₃H₄</div><div class="card-name">Propyne</div><div class="card-formula">CH₃–C≡CH</div><div class="card-desc">Terminal alkyne. Triple bond at C-1.</div><span class="card-badge badge-blue">Terminal</span></div>
+        <div class="card"><div class="card-num">C₄H₆</div><div class="card-name">But-1-yne</div><div class="card-formula">CH₃–CH₂–C≡CH</div><div class="card-desc">4-carbon terminal alkyne.</div><span class="card-badge badge-blue">Terminal</span></div>
+        <div class="card"><div class="card-num">C₄H₆</div><div class="card-name">But-2-yne</div><div class="card-formula">CH₃–C≡C–CH₃</div><div class="card-desc">Internal alkyne. Triple bond at C-2.</div><span class="card-badge badge-pink">Internal</span></div>
+      </div>
+
+      <div class="sub-heading">Complex IUPAC Examples from Notes</div>
+      <div class="formula-block">
+<span class="comment">Example 1 — alkyne with ketone:</span>
+⁵CH₃ – ⁴CH = ³CH – ²CO – ¹CH₃
+                     ↑ triple bond (yne) at C3, ketone (one) at C2
+Name: Pentan-3-yn-2-one   <span class="comment">(triple bond position named first, then ketone)</span>
+
+<span class="comment">Example 2 — diketone:</span>
+⁶CH₃ – ⁵CH₂ – ⁴CO – ³CH₂ – ²CO – ¹CH₃
+                                    two ketone groups at C2 and C4
+Name: Hexan-2,4-dione
+
+<span class="comment">Example 3 — complex branched example from notes:</span>
+¹CH₃ – ²CO–CH – ⁴CO – ⁵CH – ⁶CH₃  (with C₂H₅ at C3, CH₃ at C5)
+Name: 3-ethyl-5-methylhex-2,4-dione
+      </div>
+
+      <div class="sub-heading">Differences: Alkane vs Alkene vs Alkyne</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Property</th><th>Alkane</th><th>Alkene</th><th>Alkyne</th></tr></thead>
+          <tbody>
+            <tr><td>General Formula</td><td><span class="formula-inline">CₙH₂ₙ₊₂</span></td><td><span class="formula-inline">CₙH₂ₙ</span></td><td><span class="formula-inline">CₙH₂ₙ₋₂</span></td></tr>
+            <tr><td>Bond type</td><td>Single (–C–C–)</td><td>Double (C=C)</td><td>Triple (–C≡C–)</td></tr>
+            <tr><td>Saturation</td><td>Saturated</td><td>Unsaturated</td><td>Unsaturated</td></tr>
+            <tr><td>Hybridisation at bond</td><td>sp³</td><td>sp²</td><td>sp</td></tr>
+            <tr><td>Bond angle</td><td>109.5°</td><td>120°</td><td>180° (linear)</td></tr>
+            <tr><td>Reactivity</td><td>Low</td><td>Medium (addition)</td><td>High (addition)</td></tr>
+            <tr><td>Suffix</td><td>-ane</td><td>-ene</td><td>-yne</td></tr>
+            <tr><td>Example (2C)</td><td>Ethane C₂H₆</td><td>Ethene C₂H₄</td><td>Ethyne C₂H₂</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TOPIC 7 ══════════════════════════ -->
+    <section class="topic-section" id="alcohols">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent2)"></span> Lecture 7</div>
+        <h2 class="section-title">Alcohols</h2>
+        <p class="section-subtitle">Organic compounds with a hydroxyl (–OH) group. Formula: CₙH₂ₙ₊₁OH. Suffix: -ol.</p>
+      </div>
+
+      <div class="def-box">
+        <strong>Alcohols</strong> contain a <mark>–OH (hydroxyl)</mark> functional group attached to a carbon. General formula: <mark>CₙH₂ₙ₊₂O = R–OH</mark>. They are named by replacing the final -e of the alkane with <mark>-ol</mark>.
+      </div>
+
+      <div class="sub-heading">Classification by Number of –OH Groups</div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-name">Monohydric</div><div class="card-formula">R–OH (one –OH)</div><div class="card-desc">One hydroxyl group. Most common type. Examples: methanol, ethanol, propanol.</div><span class="card-badge badge-green">1 × –OH</span></div>
+        <div class="card"><div class="card-name">Dihydric (Diol)</div><div class="card-formula">HO–R–OH (two –OH)</div><div class="card-desc">Two hydroxyl groups. Example: ethylene glycol HO–CH₂–CH₂–OH (antifreeze).</div><span class="card-badge badge-blue">2 × –OH</span></div>
+        <div class="card"><div class="card-name">Trihydric (Triol)</div><div class="card-formula">Three –OH groups</div><div class="card-desc">Three hydroxyl groups. Example: glycerol HO–CH₂–CH(OH)–CH₂–OH (soap making).</div><span class="card-badge badge-pink">3 × –OH</span></div>
+      </div>
+
+      <div class="sub-heading">Classification by Degree (Position of –OH)</div>
+      <div class="degree-grid">
+        <div class="deg-card">
+          <div class="deg-num">1°</div>
+          <div class="deg-title">Primary Alcohol</div>
+          <div class="deg-formula">R–CH₂–OH<br>only 1 R group<br>on the C–OH</div>
+          <div class="deg-example">CH₃–CH₂–OH (Ethanol)<br>CH₃–CH₂–CH₂–OH (Propan-1-ol)</div>
+        </div>
+        <div class="deg-card">
+          <div class="deg-num">2°</div>
+          <div class="deg-title">Secondary Alcohol</div>
+          <div class="deg-formula">  R<br>  |<br>R–C–OH<br>  |<br>  H</div>
+          <div class="deg-example">CH₃–CH(OH)–CH₃<br>(Propan-2-ol / IPA)</div>
+        </div>
+        <div class="deg-card">
+          <div class="deg-num">3°</div>
+          <div class="deg-title">Tertiary Alcohol</div>
+          <div class="deg-formula">  R<br>  |<br>R–C–OH<br>  |<br>  R</div>
+          <div class="deg-example">(CH₃)₃C–OH<br>(2-methylpropan-2-ol)</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Detailed Naming Examples from Notes</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Structure</th><th>IUPAC Name</th><th>Type</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="formula-inline">CH₃OH</span></td><td>Methanol</td><td>Primary</td><td>Wood alcohol; toxic; used as fuel</td></tr>
+            <tr><td><span class="formula-inline">CH₃CH₂OH</span></td><td>Ethanol</td><td>Primary</td><td>Drinking alcohol; in beverages</td></tr>
+            <tr><td><span class="formula-inline">CH₃CH₂CH₂OH</span></td><td>Propan-1-ol</td><td>Primary</td><td>–OH at C-1</td></tr>
+            <tr><td><span class="formula-inline">CH₃CH(OH)CH₃</span></td><td>Propan-2-ol</td><td>Secondary</td><td>–OH at C-2; isopropyl alcohol</td></tr>
+            <tr><td><span class="formula-inline">HOCH₂CH₂OH</span></td><td>Ethane-1,2-diol</td><td>Dihydric</td><td>Ethylene glycol; antifreeze</td></tr>
+            <tr><td><span class="formula-inline">CH₃CH(OH)CH₂OH</span></td><td>Propan-1,2-diol</td><td>Dihydric</td><td>Two adjacent OH groups</td></tr>
+            <tr><td><span class="formula-inline">HOCH₂CH(OH)CH₂OH</span></td><td>Propan-1,2,3-triol</td><td>Trihydric</td><td>Glycerol; found in fats and oils</td></tr>
+            <tr><td><span class="formula-inline">CH₃CH₂CH₂CH₂OH</span></td><td>Butan-1-ol</td><td>Primary</td><td>4-carbon primary alcohol</td></tr>
+            <tr><td><span class="formula-inline">CH₃CH(OH)CH₂CH₃</span></td><td>Butan-2-ol</td><td>Secondary</td><td>–OH at C-2</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="quiz-box">
+        <div class="quiz-q">🧪 Quick Check: What type of alcohol is (CH₃)₃COH?</div>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="checkQuiz(this, false, 'q3')">Primary — one carbon attached to C–OH</button>
+          <button class="quiz-option" onclick="checkQuiz(this, false, 'q3')">Secondary — two carbons attached</button>
+          <button class="quiz-option" onclick="checkQuiz(this, true, 'q3')">Tertiary — three carbons attached to C–OH</button>
+        </div>
+        <div class="quiz-feedback" id="q3">✓ (CH₃)₃COH = tert-butanol. The central carbon carries three methyl groups, making it a tertiary (3°) alcohol.</div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TOPIC 8 ══════════════════════════ -->
+    <section class="topic-section" id="acids">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent4)"></span> Lecture 8</div>
+        <h2 class="section-title">Carboxylic Acids</h2>
+        <p class="section-subtitle">Organic acids with the –COOH (carboxyl) functional group. Suffix: -oic acid. General formula: CₙH₂ₙO₂.</p>
+      </div>
+
+      <div class="def-box">
+        <strong>Carboxylic acids</strong> contain the <mark>–COOH (carboxyl)</mark> group = a carbonyl (C=O) and a hydroxyl (–OH) on the same carbon. General formula: <mark>H/R–COOH</mark>. Named by replacing terminal -e of alkane with <mark>-oic acid</mark>.
+      </div>
+
+      <div class="sub-heading">IUPAC Naming Rules</div>
+      <div class="accordion">
+        <div class="acc-item open">
+          <div class="acc-header" onclick="toggleAcc(this)">Rule 1: Choose the longest chain including –COOH <span class="acc-icon">+</span></div>
+          <div class="acc-body">The carboxyl carbon MUST be included in the parent chain. It always gets position number 1 (C-1). So for HCOOH: 1 carbon chain = methanoic acid.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">Rule 2: Number from the carboxyl carbon <span class="acc-icon">+</span></div>
+          <div class="acc-body">The –COOH carbon is always C-1. Number the rest of the chain from there.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">Rule 3: Name branches with position numbers <span class="acc-icon">+</span></div>
+          <div class="acc-body">Add substituent names with position numbers before the acid name. Example: CH₃CH(CH₃)CH₂COOH = 3-methylbutanoic acid.</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Common Carboxylic Acids</div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-num">C₁</div><div class="card-name">Methanoic Acid</div><div class="card-formula">HCOOH</div><div class="card-desc">Simplest acid. Found in ant stings and nettles. Also called formic acid.</div><span class="card-badge badge-green">Formic acid</span></div>
+        <div class="card"><div class="card-num">C₂</div><div class="card-name">Ethanoic Acid</div><div class="card-formula">CH₃COOH</div><div class="card-desc">Found in vinegar (~5% solution). Also called acetic acid.</div><span class="card-badge badge-orange">Acetic acid (vinegar)</span></div>
+        <div class="card"><div class="card-num">C₃</div><div class="card-name">Propanoic Acid</div><div class="card-formula">CH₃CH₂COOH</div><div class="card-desc">Used as a food preservative (E280).</div><span class="card-badge badge-blue">Food preservative</span></div>
+        <div class="card"><div class="card-num">C₄</div><div class="card-name">Butanoic Acid</div><div class="card-formula">CH₃(CH₂)₂COOH</div><div class="card-desc">Rancid butter smell. Also called butyric acid.</div><span class="card-badge badge-pink">Butyric acid</span></div>
+        <div class="card"><div class="card-num">C₆H₅</div><div class="card-name">Benzoic Acid</div><div class="card-formula">C₆H₅COOH</div><div class="card-desc">Aromatic acid. Used as a food preservative (E210).</div><span class="card-badge badge-purple">Aromatic</span></div>
+        <div class="card"><div class="card-num">C₁₈</div><div class="card-name">Stearic Acid</div><div class="card-formula">C₁₇H₃₅COOH</div><div class="card-desc">Long-chain fatty acid. Found in animal fat and vegetable oils.</div><span class="card-badge badge-orange">Fatty acid</span></div>
+      </div>
+
+      <div class="sub-heading">Esters — Derivatives of Carboxylic Acids</div>
+      <div class="def-box">
+        Esters form when a carboxylic acid reacts with an alcohol (esterification). General formula: <mark>R–COO–R'</mark>. Named as [alkyl] [carboxylate]. Examples from notes:
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ester</th><th>Formula</th><th>From Acid + Alcohol</th><th>Smell/Use</th></tr></thead>
+          <tbody>
+            <tr><td>Ethyl ethanoate</td><td><span class="formula-inline">CH₃COOC₂H₅</span></td><td>Ethanoic acid + Ethanol</td><td>Pear drops; nail varnish remover</td></tr>
+            <tr><td>Ethyl benzoate</td><td><span class="formula-inline">C₆H₅COOC₂H₅</span></td><td>Benzoic acid + Ethanol</td><td>Benzene ring + –COOC₂H₅</td></tr>
+            <tr><td>Phenyl ethanoate (methyl benzoate)</td><td><span class="formula-inline">C₆H₅OOCCH₃</span></td><td>Ethanoic acid + Phenol</td><td>Benzene ring + –OOCCH₃</td></tr>
+            <tr><td>Methyl methanoate</td><td><span class="formula-inline">HCOOCH₃</span></td><td>Methanoic acid + Methanol</td><td>Fruity smell</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-heading">Esterification Reaction</div>
+      <div class="reaction">
+        <span class="reagent">R–COOH</span>
+        <span style="color:var(--text3)">+</span>
+        <span class="reagent">HO–R'</span>
+        <span class="condition">H⁺ catalyst / Δ</span>
+        <span class="arrow">⇌</span>
+        <span class="product">R–COO–R'</span>
+        <span style="color:var(--text3)">+</span>
+        <span class="product">H₂O</span>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TOPIC 9 ══════════════════════════ -->
+    <section class="topic-section" id="amides">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent3)"></span> Lecture 9</div>
+        <h2 class="section-title">Amides</h2>
+        <p class="section-subtitle">Derivatives of carboxylic acids where –OH is replaced by –NH₂. Functional group: –CONH₂. Suffix: -amide.</p>
+      </div>
+
+      <div class="def-box">
+        <strong>Amides</strong> contain the <mark>–CONH₂</mark> functional group. They are derived from carboxylic acids by replacing –OH with –NH₂ (or –NHR or –NR₂). General formula: <mark>H/R–CO–NH₂</mark>. Suffix: <mark>-amide</mark>.
+      </div>
+
+      <div class="sub-heading">Types of Amides</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-name">Primary Amide</div>
+          <div class="card-formula">R–CO–NH₂</div>
+          <div class="card-desc">Two H atoms on N. The simplest type.</div>
+          <span class="card-badge badge-green">–NH₂ group</span>
+        </div>
+        <div class="card">
+          <div class="card-name">Secondary Amide (N-substituted)</div>
+          <div class="card-formula">R–CO–NH–R'</div>
+          <div class="card-desc">One H on N replaced by R group. Prefix "N-" in name.</div>
+          <span class="card-badge badge-blue">–NHR group</span>
+        </div>
+        <div class="card">
+          <div class="card-name">Tertiary Amide (N,N-disubstituted)</div>
+          <div class="card-formula">R–CO–NR'R''</div>
+          <div class="card-desc">Both H atoms on N replaced. Prefix "N,N-" in name.</div>
+          <span class="card-badge badge-pink">–NR₂ group</span>
+        </div>
+      </div>
+
+      <div class="sub-heading">Primary Amides — Naming Examples</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Structure</th><th>IUPAC Name</th><th>Also Called</th><th>Related Acid</th></tr></thead>
+          <tbody>
+            <tr><td><span class="formula-inline">H–CONH₂</span></td><td>Methanamide</td><td>Formamide</td><td>Methanoic acid (HCOOH)</td></tr>
+            <tr><td><span class="formula-inline">CH₃–CONH₂</span></td><td>Ethanamide</td><td>Acetamide</td><td>Ethanoic acid (CH₃COOH)</td></tr>
+            <tr><td><span class="formula-inline">CH₃CH₂–CONH₂</span></td><td>Propanamide</td><td>Propionamide</td><td>Propanoic acid</td></tr>
+            <tr><td><span class="formula-inline">CH₃(CH₂)₂–CONH₂</span></td><td>Butanamide</td><td>Butyramide</td><td>Butanoic acid</td></tr>
+            <tr><td><span class="formula-inline">C₆H₅–CONH₂</span></td><td>Benzamide</td><td>—</td><td>Benzoic acid</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-heading">N-Substituted Amides from Notes</div>
+      <div class="formula-block">
+<span class="comment">N-ethyl-N-methyl-ethanamide:</span>
+               CH₃
+               |
+CH₃ – CO – N
+               |
+               C₂H₅
+Formula: CH₃–CO–N(CH₃)(C₂H₅)
+→ The nitrogen carries one methyl AND one ethyl group.
+→ "N-ethyl" and "N-methyl" are prefixes (N = on the nitrogen)
+
+<span class="comment">N-ethyl ethanamide:</span>
+CH₃–CO–NH–C₂H₅
+→ One ethyl substituent on N
+      </div>
+
+      <div class="sub-heading">Formation of Amides (Acylation of Ammonia)</div>
+      <div class="reaction">
+        <span class="reagent">R–COOH</span>
+        <span style="color:var(--text3)">+</span>
+        <span class="reagent">NH₃</span>
+        <span class="condition">−H₂O / Δ</span>
+        <span class="arrow">⟶</span>
+        <span class="product">R–CONH₂</span>
+        <span style="color:var(--text3)">+</span>
+        <span class="product">H₂O</span>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TOPIC 10 ══════════════════════════ -->
+    <section class="topic-section" id="isomerism">
+      <div class="section-header">
+        <div class="section-tag"><span class="dot" style="background:var(--accent5)"></span> Lecture 10</div>
+        <h2 class="section-title">Isomerism — Cis-Trans & Dipole Moment</h2>
+        <p class="section-subtitle">Geometric isomers arise from restricted rotation about a C=C double bond. Cis and trans isomers differ in physical properties including melting point and dipole moment.</p>
+      </div>
+
+      <div class="def-box">
+        <strong>Geometric isomerism (cis-trans)</strong> occurs when rotation around a double bond is restricted, and the same groups can be on the <mark>same side (cis)</mark> or <mark>opposite sides (trans)</mark> of the double bond.
+      </div>
+
+      <div class="sub-heading">Conditions for Cis-Trans Isomerism</div>
+      <div class="accordion">
+        <div class="acc-item open">
+          <div class="acc-header" onclick="toggleAcc(this)">Condition 1: Restricted rotation (C=C or ring) <span class="acc-icon">+</span></div>
+          <div class="acc-body">Free rotation around C=C is NOT possible (unlike C–C). This means groups attached to the double bond are locked in place, giving rise to different spatial arrangements.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">Condition 2: Two DIFFERENT groups on EACH double bond carbon <span class="acc-icon">+</span></div>
+          <div class="acc-body">If one double bond carbon has two identical groups (e.g., CH₂=), no cis/trans isomerism is possible. Each C in the C=C must have two different substituents.</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Cis vs Trans — But-2-ene</div>
+      <div class="cis-trans-grid">
+        <div class="ct-card cis">
+          <div class="ct-label">Cis-but-2-ene</div>
+          <svg class="ct-svg" width="180" height="90" viewBox="0 0 180 90">
+            <text x="30" y="20" font-family="DM Mono, monospace" font-size="12" fill="#4adeaa">CH₃</text>
+            <text x="120" y="20" font-family="DM Mono, monospace" font-size="12" fill="#4adeaa">CH₃</text>
+            <text x="30" y="80" font-family="DM Mono, monospace" font-size="12" fill="#8fa3bf">H</text>
+            <text x="130" y="80" font-family="DM Mono, monospace" font-size="12" fill="#8fa3bf">H</text>
+            <line x1="50" y1="22" x2="75" y2="45" stroke="#4adeaa" stroke-width="1.5"/>
+            <line x1="130" y1="22" x2="105" y2="45" stroke="#4adeaa" stroke-width="1.5"/>
+            <line x1="50" y1="72" x2="75" y2="50" stroke="#8fa3bf" stroke-width="1.5"/>
+            <line x1="130" y1="72" x2="105" y2="50" stroke="#8fa3bf" stroke-width="1.5"/>
+            <line x1="75" y1="45" x2="105" y2="50" stroke="#e8edf5" stroke-width="2.5"/>
+            <line x1="75" y1="42" x2="105" y2="47" stroke="#e8edf5" stroke-width="1.5"/>
+          </svg>
+          <div class="ct-desc">Both CH₃ groups are on the <strong style="color:#4adeaa">same side</strong> of the double bond.</div>
+          <div class="ct-mp">B.P.: 3.7°C &nbsp;|&nbsp; Dipole moment: μ ≠ 0</div>
+        </div>
+        <div class="ct-card trans">
+          <div class="ct-label">Trans-but-2-ene</div>
+          <svg class="ct-svg" width="180" height="90" viewBox="0 0 180 90">
+            <text x="30" y="20" font-family="DM Mono, monospace" font-size="12" fill="#38bdf8">CH₃</text>
+            <text x="120" y="80" font-family="DM Mono, monospace" font-size="12" fill="#38bdf8">CH₃</text>
+            <text x="30" y="80" font-family="DM Mono, monospace" font-size="12" fill="#8fa3bf">H</text>
+            <text x="120" y="20" font-family="DM Mono, monospace" font-size="12" fill="#8fa3bf">H</text>
+            <line x1="50" y1="22" x2="75" y2="45" stroke="#38bdf8" stroke-width="1.5"/>
+            <line x1="130" y1="72" x2="105" y2="50" stroke="#38bdf8" stroke-width="1.5"/>
+            <line x1="50" y1="72" x2="75" y2="50" stroke="#8fa3bf" stroke-width="1.5"/>
+            <line x1="130" y1="22" x2="105" y2="45" stroke="#8fa3bf" stroke-width="1.5"/>
+            <line x1="75" y1="45" x2="105" y2="50" stroke="#e8edf5" stroke-width="2.5"/>
+            <line x1="75" y1="42" x2="105" y2="47" stroke="#e8edf5" stroke-width="1.5"/>
+          </svg>
+          <div class="ct-desc">CH₃ groups are on <strong style="color:#38bdf8">opposite sides</strong> of the double bond.</div>
+          <div class="ct-mp">B.P.: 0.9°C &nbsp;|&nbsp; Dipole moment: μ = 0</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Dipole Moment (μ)</div>
+      <div class="def-box">
+        <strong>Dipole moment (μ)</strong> is a measure of polarity. A bond between two different atoms has a dipole. When bond dipoles <mark>add up</mark> (cis isomers), μ ≠ 0. When they <mark>cancel out</mark> (trans isomers), μ = 0.
+      </div>
+
+      <div class="formula-block">
+CH₂Cl₂ (dichloromethane):
+   H–C(δ+)–Cl(δ−) → μ = 1.91 D (Debye)
+   The two C–Cl bond dipoles point same direction → net dipole ≠ 0
+
+CHCl₃ (symmetrical arrangement):
+   Four identical bonds cancel out → μ = 0
+
+Key rule from notes:
+→ Cis isomers: dipole moments ADD → higher μ
+→ Trans isomers: dipole moments CANCEL → μ = 0 (or very small)
+      </div>
+
+      <div class="sub-heading">Fumaric Acid vs Maleic Acid (Dicarboxylic Alkene Acids)</div>
+      <div class="cis-trans-grid">
+        <div class="ct-card cis">
+          <div class="ct-label">Maleic Acid (cis)</div>
+          <div class="formula-block" style="font-size:12px;text-align:left;margin:8px 0">
+    COOH    COOH
+      \       /
+       C = C
+      /       \
+    H           H
+          </div>
+          <div class="ct-desc">Both –COOH groups on same side. Forms cyclic anhydride easily.</div>
+          <div class="ct-mp">M.P.: 135°C &nbsp;|&nbsp; More soluble in water</div>
+        </div>
+        <div class="ct-card trans">
+          <div class="ct-label">Fumaric Acid (trans)</div>
+          <div class="formula-block" style="font-size:12px;text-align:left;margin:8px 0">
+    COOH        H
+      \           \
+       C = C
+      /           /
+    H         COOH
+          </div>
+          <div class="ct-desc">–COOH groups on opposite sides. Cannot form anhydride easily.</div>
+          <div class="ct-mp">M.P.: 287°C &nbsp;|&nbsp; Less soluble; found in plants</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">More Cis-Trans Examples</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Compound</th><th>Isomer</th><th>Structure</th><th>Key Property</th></tr></thead>
+          <tbody>
+            <tr><td>2-butene</td><td>Cis</td><td><span class="formula-inline">CH₃/H on same C=C side</span></td><td>B.P. 3.7°C; μ ≠ 0</td></tr>
+            <tr><td>2-butene</td><td>Trans</td><td><span class="formula-inline">CH₃/H on opposite sides</span></td><td>B.P. 0.9°C; μ = 0</td></tr>
+            <tr><td>Maleic acid</td><td>Cis</td><td><span class="formula-inline">HOOC/H cis at C=C</span></td><td>M.P. 135°C; forms anhydride</td></tr>
+            <tr><td>Fumaric acid</td><td>Trans</td><td><span class="formula-inline">HOOC/H trans at C=C</span></td><td>M.P. 287°C; found in plants</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="quiz-box">
+        <div class="quiz-q">🧪 Quick Check: Why does the trans isomer of 2-butene have a dipole moment of zero?</div>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="checkQuiz(this, false, 'q4')">Because it has no polar bonds.</button>
+          <button class="quiz-option" onclick="checkQuiz(this, true, 'q4')">Because the bond dipoles are equal and opposite, cancelling each other out.</button>
+          <button class="quiz-option" onclick="checkQuiz(this, false, 'q4')">Because trans isomers are always non-polar molecules.</button>
+        </div>
+        <div class="quiz-feedback" id="q4">✓ In trans-2-butene, the two C–CH₃ bond dipoles point in exactly opposite directions and cancel. The net dipole moment = 0. In the cis form, the dipoles point in similar directions and add up.</div>
+      </div>
+    </section>
+
+  </div><!-- /content -->
+</main>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+function setActive(el) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  el.classList.add('active');
+  if (window.innerWidth <= 900) toggleSidebar();
+}
+
+function filterNav(val) {
+  const v = val.toLowerCase();
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.style.display = item.textContent.toLowerCase().includes(v) ? '' : 'none';
+  });
+}
+
+function showIso(id, btn, group) {
+  document.querySelectorAll('.iso-panel').forEach(p => {
+    if (['pent1','pent2','pent3'].includes(p.id)) p.classList.remove('active');
+  });
+  document.querySelectorAll('.iso-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function toggleAcc(header) {
+  const item = header.parentElement;
+  item.classList.toggle('open');
+}
+
+function checkQuiz(btn, correct, qid) {
+  const parent = btn.parentElement;
+  parent.querySelectorAll('.quiz-option').forEach(b => {
+    b.disabled = true;
+    b.style.cursor = 'default';
+  });
+  btn.classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) {
+    parent.querySelectorAll('.quiz-option').forEach(b => {
+      if (b.dataset.correct !== undefined || b.textContent !== btn.textContent) {
+        // find correct answer
+      }
+    });
+  }
+  const fb = document.getElementById(qid);
+  fb.classList.add('show');
+  updateProgress();
+}
+
+const answered = new Set();
+function updateProgress() {
+  const total = 4;
+  const done = document.querySelectorAll('.quiz-feedback.show').length;
+  const pct = Math.round((done / total) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+// Intersection Observer for active nav item
+const sections = document.querySelectorAll('.topic-section');
+const navItems = document.querySelectorAll('.nav-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(n => {
+        n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
